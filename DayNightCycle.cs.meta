@@ -1,5 +1,7 @@
 fileFormatVersion: 2
 guid: 23d027578dab043c791eea5b3a7bcadf
+labels:
+- SceneSetup
 timeCreated: 1490403294
 licenseType: Free
 MonoImporter:
