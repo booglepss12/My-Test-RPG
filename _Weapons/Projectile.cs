@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 using UnityEngine;
 
-
+using RPG.Core; //TODO Consider rewire
 
 public class Projectile : MonoBehaviour
 {
@@ -59,7 +59,7 @@ public class Projectile : MonoBehaviour
 
         var layerCollidedWith = collision.gameObject.layer;
 
-        if (layerCollidedWith != shooter.layer)
+        if (shooter && layerCollidedWith != shooter.layer)
         {
            DamageIfDamageable(collision);
 
