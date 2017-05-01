@@ -1,12 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 namespace RPG.CameraUI
 {
     [RequireComponent(typeof(CameraRaycaster))]
     public class CursorAffordance : MonoBehaviour
     {
-
         [SerializeField] Texture2D walkCursor = null;
         [SerializeField] Texture2D unknownCursor = null;
         [SerializeField] Texture2D targetCursor = null;

@@ -2,6 +2,7 @@
 using UnityEngine.EventSystems;
 using System.Linq;
 using System.Collections.Generic;
+
 namespace RPG.CameraUI
 {
     public class CameraRaycaster : MonoBehaviour

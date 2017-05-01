@@ -1,7 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-namespace RPG.Core //TODO Consider rewire
+
+namespace RPG.Core
 {
     public class SpinMe : MonoBehaviour
     {

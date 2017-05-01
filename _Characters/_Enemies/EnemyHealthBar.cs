@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+
 namespace RPG.Characters
 {
     public class EnemyHealthBar : MonoBehaviour
