@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 114272382486777280}
   - component: {fileID: 114978401065010746}
   - component: {fileID: 114633348878164724}
+  - component: {fileID: 114375571341925680}
   m_Layer: 10
   m_Name: Player
   m_TagString: Player
@@ -712,6 +713,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: beb75cb33cc6f884db40fe6cec105d9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114375571341925680
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 149790}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9e3f6b65ab1be3f429aaa71e592ece54, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  energyBar: {fileID: 0}
+  maxEnergyPoints: 100
+  pointsPerHit: 10
 --- !u!114 &114446483106779698
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -737,7 +752,7 @@ MonoBehaviour:
   enemyLayer: 9
   maxHealthPoints: 1000
   damagePerHit: 50
-  weaponInUse: {fileID: 11400000, guid: ce7775877fb709346bbf849923cc4dde, type: 2}
+  weaponInUse: {fileID: 11400000, guid: c9c259f00b817dc40b20bbbd3f7274b2, type: 2}
   animatorOverrideController: {fileID: 22100000, guid: f9b74b2a901f2a249a69ccfd7ffa0d80,
     type: 2}
 --- !u!114 &114978401065010746

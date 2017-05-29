@@ -9636,32 +9636,14 @@ Prefab:
       value: 
       objectReference: {fileID: 13400000, guid: 52baaeb214519f347a35cf0edfd262ff,
         type: 2}
-    - target: {fileID: 114633348878164724, guid: 7737647c22c1fc64a88d5cd030c352ce,
+    - target: {fileID: 114375571341925680, guid: 7737647c22c1fc64a88d5cd030c352ce,
         type: 2}
-      propertyPath: weaponInUse
+      propertyPath: energyBar
       value: 
-      objectReference: {fileID: 11400000, guid: c9c259f00b817dc40b20bbbd3f7274b2,
-        type: 2}
+      objectReference: {fileID: 2013036599}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1435672845 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 149790, guid: 7737647c22c1fc64a88d5cd030c352ce, type: 2}
-  m_PrefabInternal: {fileID: 1435672844}
---- !u!114 &1435672846
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1435672845}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9e3f6b65ab1be3f429aaa71e592ece54, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  energyBar: {fileID: 2013036599}
-  maxEnergyPoints: 100
 --- !u!1 &1440165882
 GameObject:
   m_ObjectHideFlags: 0
