@@ -3,7 +3,7 @@
 public class AudioTrigger : MonoBehaviour
 {
     [SerializeField] AudioClip clip;
-    [SerializeField] int layerFilter = 11;
+    [SerializeField] int layerFilter = 10; //TODO remove dependency on layer
     [SerializeField] float triggerRadius = 0f;
     [SerializeField] bool isOneTimeOnly = true;
 
