@@ -35,7 +35,8 @@ namespace RPG.Characters
         [SerializeField] Weapon weaponInUse = null;
 
         [SerializeField] AnimatorOverrideController animatorOverrideController = null;
-
+        //temporarilhy seriaziing for debugging
+        [SerializeField] SpecialAbilityConfig Ability1;
 
 
         Animator animator;
@@ -63,6 +64,7 @@ namespace RPG.Characters
             PutWeaponInHand();
 
             SetupRuntimeAnimator();
+            Ability1.AddComponent(gameObject);
 
         }
 
