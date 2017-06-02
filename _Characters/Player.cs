@@ -163,10 +163,23 @@ namespace RPG.Characters
                 AttackTarget(enemy);
 
             }
+            else if (Input.GetMouseButtonDown(1))
+            {
+                AttemptSpecialAbility1(enemy);
+            }
 
         }
 
-
+        private void AttemptSpecialAbility1(Enemy enemy)
+        {
+            var energyComponent = GetComponent<Energy>();
+            if (energyComponent.isEnergyAvailable(10f)) //read from SO
+            {
+                energyComponent.ConsumeEnergy(10f);
+                //TODO use the ability
+            }
+            throw new NotImplementedException();
+        }
 
         private void AttackTarget(Enemy enemy)
 
