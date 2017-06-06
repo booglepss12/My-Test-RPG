@@ -1,23 +1,69 @@
 ﻿using System.Collections;
+
 using System.Collections.Generic;
+
 using UnityEngine;
+
+
+
 namespace RPG.Characters
+
 {
+
     public class PowerAttackBehaviour : MonoBehaviour, ISpecialAbility
+
     {
+
         PowerAttackConfig config;
 
+
+
         public void SetConfig(PowerAttackConfig configToSet)
-        {
-            this.config = configToSet;
-        }
-       public void Use()
+
         {
 
+            this.config = configToSet;
+
         }
-        private void Start()
+
+
+
+        // Use this for initialization
+
+        void Start()
+
         {
-            print("Power Attack behaviour attached" + gameObject.name );
+
+            print("Power Attack behaviour attached to " + gameObject.name);
+
         }
+
+
+
+        // Update is called once per frame
+
+        void Update()
+
+        {
+
+
+
+        }
+
+
+
+        public void Use(AbilityUseParams useParams)
+
+        {
+
+            print("Power attack used by: " + gameObject.name);
+
+            float damageToDeal = useParams.baseDamage + config.GetExtraDamage();
+
+            useParams.target.TakeDamage(damageToDeal);
+
+        }
+
     }
+
 }
