@@ -21,6 +21,7 @@ namespace RPG.Characters
         [SerializeField] float maxEnergyPoints = 100f;
 
         [SerializeField] float regenPointsPerSecond = 1f;
+        
 
 
 
@@ -42,6 +43,14 @@ namespace RPG.Characters
 
             currentEnergyPoints = maxEnergyPoints;
 
+        }
+        void Update()
+        {
+           if (currentEnergyPoints < maxEnergyPoints)
+            {
+                AddEnergyPoints();
+                UpdateEnergyBar();
+            }
         }
 
 
