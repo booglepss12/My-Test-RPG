@@ -7,6 +7,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 using UnityEngine.Assertions;
+using UnityEngine.SceneManagement;
 
 
 
@@ -79,11 +80,35 @@ namespace RPG.Characters
         public void TakeDamage(float damage)
 
         {
+            bool playerDies = currentHealthPoints - damage <= 0;
+            if (playerDies) //player dies
+            {
+                ReduceHealth(damage);
+                //kill player
+                StartCoroutine(KillPlayer());     
 
-            currentHealthPoints = Mathf.Clamp(currentHealthPoints - damage, 0f, maxHealthPoints);
-
+            }
+            else
+            {
+                ReduceHealth(damage);
+            }
+         }
+        IEnumerator KillPlayer()
+        {
+            //play sound
+            Debug.Log("I am dying");
+            //trigger death animation
+            Debug.Log("Death Animation");
+            //wait a bit
+            yield return new WaitForSecondsRealtime(2f); //TODO: use audio clip length for death audio
+            //reload scene
+            SceneManager.LoadScene(0);
         }
-
+        private void ReduceHealth (float damage)
+        {
+            currentHealthPoints = Mathf.Clamp(currentHealthPoints - damage, 0f, maxHealthPoints);
+            //play sounds
+        }
 
 
         private void SetCurrentMaxHealth()

@@ -30,6 +30,8 @@ namespace RPG.CameraUI
 
         float maxRaycastDepth = 100f; // Hard coded value
 
+        Rect ScreenRectAtStartPlay = new Rect(0, 0, Screen.width, Screen.height); //move inside update to support screen size
+
 
 
         public delegate void OnMouseOverEnemy(Enemy enemy);
@@ -73,15 +75,17 @@ namespace RPG.CameraUI
         void PerformRaycasts()
 
         {
+            if (ScreenRectAtStartPlay.Contains(Input.mousePosition))
+            {
+                Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
-            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+                // Specify layer priorities below, order matters
 
-            // Specify layer priorities below, order matters
+                if (RaycastForEnemy(ray)) { return; }
 
-            if (RaycastForEnemy(ray)) { return; }
+                if (RaycastForPotentiallyWalkable(ray)) { return; }
 
-            if (RaycastForPotentiallyWalkable(ray)) { return; }
-
+            }
         }
 
 
