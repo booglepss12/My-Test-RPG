@@ -36,6 +36,8 @@ namespace RPG.Characters
         [SerializeField] Weapon weaponInUse = null;
 
         [SerializeField] AnimatorOverrideController animatorOverrideController = null;
+        [SerializeField] AudioClip[] damageSounds;
+        [SerializeField] AudioClip[] deathSounds;
 
 
 
@@ -43,8 +45,8 @@ namespace RPG.Characters
 
         [SerializeField] SpecialAbility[] abilities;
 
-
-
+        
+        AudioSource audioSource;
         Animator animator;
 
         float currentHealthPoints;
@@ -72,7 +74,7 @@ namespace RPG.Characters
             SetupRuntimeAnimator();
 
             abilities[0].AttachComponentTo(gameObject);
-
+            audioSource = GetComponent<AudioSource>();
         }
 
 
@@ -91,16 +93,19 @@ namespace RPG.Characters
             else
             {
                 ReduceHealth(damage);
+                audioSource.clip = damageSounds[UnityEngine.Random.Range(0, damageSounds.Length)];
+                audioSource.Play();
             }
          }
         IEnumerator KillPlayer()
         {
             //play sound
-            Debug.Log("I am dying");
+            audioSource.clip = deathSounds[UnityEngine.Random.Range(0, deathSounds.Length)];
+            audioSource.Play();
             //trigger death animation
             Debug.Log("Death Animation");
             //wait a bit
-            yield return new WaitForSecondsRealtime(2f); //TODO: use audio clip length for death audio
+            yield return new WaitForSecondsRealtime(audioSource.clip.length); 
             //reload scene
             SceneManager.LoadScene(0);
         }
