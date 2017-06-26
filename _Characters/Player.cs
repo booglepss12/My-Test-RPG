@@ -44,7 +44,8 @@ namespace RPG.Characters
         // Temporarily serialized for dubbing
 
         [SerializeField] SpecialAbility[] abilities;
-
+        const string DEATH_TRIGGER = "Death";
+        const string ATTACK_TRIGGER = "Attack";
         
         AudioSource audioSource;
         Animator animator;
@@ -82,7 +83,7 @@ namespace RPG.Characters
         public void TakeDamage(float damage)
 
         {
-            bool playerDies = currentHealthPoints - damage <= 0;
+            bool playerDies = currentHealthPoints - damage <= 0; //must ask before reducing health
             if (playerDies) //player dies
             {
                 ReduceHealth(damage);
@@ -93,17 +94,16 @@ namespace RPG.Characters
             else
             {
                 ReduceHealth(damage);
-                audioSource.clip = damageSounds[UnityEngine.Random.Range(0, damageSounds.Length)];
-                audioSource.Play();
+                
             }
          }
         IEnumerator KillPlayer()
         {
+            //trigger death animation
+            animator.SetTrigger(DEATH_TRIGGER);
             //play sound
             audioSource.clip = deathSounds[UnityEngine.Random.Range(0, deathSounds.Length)];
             audioSource.Play();
-            //trigger death animation
-            Debug.Log("Death Animation");
             //wait a bit
             yield return new WaitForSecondsRealtime(audioSource.clip.length); 
             //reload scene
@@ -113,6 +113,8 @@ namespace RPG.Characters
         {
             currentHealthPoints = Mathf.Clamp(currentHealthPoints - damage, 0f, maxHealthPoints);
             //play sounds
+            audioSource.clip = damageSounds[UnityEngine.Random.Range(0, damageSounds.Length)];
+            audioSource.Play();
         }
 
 
@@ -246,7 +248,7 @@ namespace RPG.Characters
 
             {
 
-                animator.SetTrigger("Attack"); // TODO make const
+                animator.SetTrigger(ATTACK_TRIGGER); // TODO make const
 
                 enemy.TakeDamage(baseDamage);
 
