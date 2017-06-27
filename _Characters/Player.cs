@@ -99,13 +99,14 @@ namespace RPG.Characters
          }
         IEnumerator KillPlayer()
         {
-            //trigger death animation
-            animator.SetTrigger(DEATH_TRIGGER);
+            // trigger death animation
+            animator.SetTrigger(DEATH_TRIGGER); 
             //play sound
             audioSource.clip = deathSounds[UnityEngine.Random.Range(0, deathSounds.Length)];
             audioSource.Play();
             //wait a bit
-            yield return new WaitForSecondsRealtime(audioSource.clip.length); 
+            yield return new WaitForSecondsRealtime(4f);
+
             //reload scene
             SceneManager.LoadScene(0);
         }
@@ -248,7 +249,7 @@ namespace RPG.Characters
 
             {
 
-                animator.SetTrigger(ATTACK_TRIGGER); // TODO make const
+                animator.SetTrigger(ATTACK_TRIGGER); 
 
                 enemy.TakeDamage(baseDamage);
 
