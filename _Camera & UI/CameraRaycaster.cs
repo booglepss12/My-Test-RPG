@@ -30,7 +30,7 @@ namespace RPG.CameraUI
 
         float maxRaycastDepth = 100f; // Hard coded value
 
-        Rect ScreenRectAtStartPlay = new Rect(0, 0, Screen.width, Screen.height); //move inside update to support screen size
+        Rect currentScreenRect;
 
 
 
@@ -49,7 +49,7 @@ namespace RPG.CameraUI
         void Update()
 
         {
-
+            currentScreenRect = new Rect(0, 0, Screen.width, Screen.height); 
             // Check if pointer is over an interactable UI element
 
             if (EventSystem.current.IsPointerOverGameObject())
@@ -75,7 +75,7 @@ namespace RPG.CameraUI
         void PerformRaycasts()
 
         {
-            if (ScreenRectAtStartPlay.Contains(Input.mousePosition))
+            if (currentScreenRect.Contains(Input.mousePosition))
             {
                 Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
 
