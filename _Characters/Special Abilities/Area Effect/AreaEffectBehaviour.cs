@@ -96,7 +96,7 @@ public class AreaEffectBehaviour : MonoBehaviour, ISpecialAbility
 
                 float damageToDeal = useParams.baseDamage + config.GetDamageToEachTarget(); // TODO ok Rick?
 
-                damageable.TakeDamage(damageToDeal);
+                damageable.AdjustHealth(damageToDeal);
 
             }
 

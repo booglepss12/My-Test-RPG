@@ -80,20 +80,20 @@ namespace RPG.Characters
 
 
 
-        public void TakeDamage(float damage)
+        public void AdjustHealth(float changePoints)
 
         {
-            bool playerDies = currentHealthPoints - damage <= 0; //must ask before reducing health
+            bool playerDies = currentHealthPoints - changePoints <= 0; //must ask before reducing health
             if (playerDies) //player dies
             {
-                ReduceHealth(damage);
+                ReduceHealth(changePoints);
                 //kill player
                 StartCoroutine(KillPlayer());     
 
             }
             else
             {
-                ReduceHealth(damage);
+                ReduceHealth(changePoints);
                 
             }
          }
@@ -251,7 +251,7 @@ namespace RPG.Characters
 
                 animator.SetTrigger(ATTACK_TRIGGER); 
 
-                enemy.TakeDamage(baseDamage);
+                enemy.AdjustHealth(baseDamage);
 
                 lastHitTime = Time.time;
 
