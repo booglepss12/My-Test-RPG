@@ -34,21 +34,13 @@ namespace RPG.Characters
 
         {
 
-            print("Power Attack behaviour attached to " + gameObject.name);
+          
 
         }
 
 
 
-        // Update is called once per frame
-
-        void Update()
-
-        {
-
-
-
-        }
+        
 
 
 
@@ -56,7 +48,7 @@ namespace RPG.Characters
 
         {
 
-            print("Power attack used by: " + gameObject.name);
+         
 
             DealDamage(useParams);
 
@@ -90,7 +82,7 @@ namespace RPG.Characters
 
             float damageToDeal = useParams.baseDamage + config.GetExtraDamage();
 
-            useParams.target.AdjustHealth(damageToDeal);
+            useParams.target.TakeDamage(damageToDeal);
 
         }
 

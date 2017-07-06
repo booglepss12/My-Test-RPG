@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 198022659773449014}
   - component: {fileID: 199075886743125172}
   m_Layer: 10
-  m_Name: Power Attack 1
+  m_Name: SH L1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -44,6 +44,7 @@ namespace RPG.Characters
 
         [SerializeField] float energyCost = 10f;
         [SerializeField] GameObject particlePrefab = null;
+        [SerializeField] AudioClip audioClip = null;
 
 
 
@@ -76,6 +77,11 @@ namespace RPG.Characters
         public GameObject GetParticlePrefab()
         {
             return particlePrefab;
+        }
+        
+        public AudioClip GetAudioClip()
+        {
+            return audioClip;
         }
 
     }
