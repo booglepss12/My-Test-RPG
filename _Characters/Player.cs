@@ -38,7 +38,9 @@ namespace RPG.Characters
         [SerializeField] AnimatorOverrideController animatorOverrideController = null;
         [SerializeField] AudioClip[] damageSounds;
         [SerializeField] AudioClip[] deathSounds;
-
+        [Range(.1f, 1.0f)] [SerializeField] float criticalHitChance = 0.1f;
+        [SerializeField] float criticalHitMultiplier = 1.25f;
+        [SerializeField] ParticleSystem myParticleSystem = null;
 
 
         // Temporarily serialized for dubbing
@@ -47,6 +49,7 @@ namespace RPG.Characters
         const string DEATH_TRIGGER = "Death";
         const string ATTACK_TRIGGER = "Attack";
 
+       
         Enemy enemy = null;
         AudioSource audioSource = null;
         Animator animator = null;
@@ -67,6 +70,7 @@ namespace RPG.Characters
 
         {
             audioSource = GetComponent<AudioSource>();
+          
 
             RegisterForMouseClick();
 
@@ -277,9 +281,9 @@ namespace RPG.Characters
 
             {
 
-                animator.SetTrigger(ATTACK_TRIGGER); 
+                animator.SetTrigger(ATTACK_TRIGGER);
 
-                enemy.TakeDamage(baseDamage);
+                enemy.TakeDamage(CalculateDamage());
 
                 lastHitTime = Time.time;
 
@@ -287,7 +291,21 @@ namespace RPG.Characters
 
         }
 
-
+        private float CalculateDamage()
+        {
+            //allow for critical hit
+            bool isCriticalHit = UnityEngine.Random.Range(0f, 1f) <= criticalHitChance;
+            float damageBeforeCritical = baseDamage + weaponInUse.GetAdditionalDamage();
+            if (isCriticalHit)
+            {
+                myParticleSystem.Play();
+                return damageBeforeCritical * criticalHitMultiplier;
+            }
+            else
+            {
+                return damageBeforeCritical;
+            }
+        }
 
         private bool IsTargetInRange(GameObject target)
 
