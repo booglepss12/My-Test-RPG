@@ -1,4 +1,4 @@
-﻿using System.Collections;
+﻿﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -37,7 +37,7 @@ namespace RPG.Weapons
             RemoveAnimationEvents();
             return attackAnimation;
         }
-        
+
         public float GetAdditionalDamage()
         {
             return additionalDamage;

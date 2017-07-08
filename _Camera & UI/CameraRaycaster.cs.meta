@@ -1,14 +1,10 @@
 fileFormatVersion: 2
 guid: d02853f5d34bd8f429969ac34c466d07
-labels:
-- Ray
-timeCreated: 1496264148
+timeCreated: 1496087794
 licenseType: Free
 MonoImporter:
   serializedVersion: 2
-  defaultReferences:
-  - walkCursor: {fileID: 2800000, guid: 343650ca3dfb2134691998d5e632a729, type: 3}
-  - enemyCursor: {fileID: 2800000, guid: a8a7e0e914bfc074790c9249c7e8f2dd, type: 3}
+  defaultReferences: []
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

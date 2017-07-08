@@ -1,9 +1,9 @@
-﻿using UnityEngine;
+﻿﻿using UnityEngine;
 
 public class AudioTrigger : MonoBehaviour
 {
     [SerializeField] AudioClip clip;
-    [SerializeField] int layerFilter = 10; //TODO remove dependency on layer
+    [SerializeField] int layerFilter = 11;
     [SerializeField] float triggerRadius = 0f;
     [SerializeField] bool isOneTimeOnly = true;
 
