@@ -8,11 +8,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 42d382fab8fc5da49aaea4fcc0a624ac, type: 3}
+  m_Script: {fileID: 11500000, guid: 8938686f2fec74834b463303abe56c16, type: 3}
   m_Name: SH L1
   m_EditorClassIdentifier: 
-  energyCost: 50
-  particlePrefab: {fileID: 1700257011311634, guid: 0847390565995b6488ac27ac3e676dda,
+  energyCost: 10
+  particlePrefab: {fileID: 1421886598430536, guid: 69a0ad31c61984c4e8a2746d1b5d1e42,
     type: 2}
   audioClip: {fileID: 8300000, guid: fd66b400fc34ed445877ff3dc5837c67, type: 3}
   extraHealth: 50
