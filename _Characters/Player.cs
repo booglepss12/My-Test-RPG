@@ -197,5 +197,10 @@ namespace RPG.Characters
             float distanceToTarget = (target.transform.position - transform.position).magnitude;
             return distanceToTarget <= weaponInUse.GetMaxAttackRange();
         }
+
+        public void PutWeaponInHand(Weapon weaponConfig)
+        {
+            print("Putting weapon in hand " + weaponConfig);
+        }
     }
 }
