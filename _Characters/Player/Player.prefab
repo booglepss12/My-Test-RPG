@@ -2180,7 +2180,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   maxHealthPoints: 600
   baseDamage: 10
-  weaponInUse: {fileID: 11400000, guid: 42b20c93823e4e345ab656322c4f0316, type: 2}
+  currentWeaponConfig: {fileID: 11400000, guid: c9c259f00b817dc40b20bbbd3f7274b2,
+    type: 2}
   animatorOverrideController: {fileID: 22100000, guid: e92f24f13a6764b40bb121d6a2e3d168,
     type: 2}
   damageSounds:
@@ -2198,9 +2199,9 @@ MonoBehaviour:
   criticalHitMultiplier: 1.25
   criticalHitParticle: {fileID: 198757451732837772}
   abilities:
-  - {fileID: 11400000, guid: 7d493ef7d1af04307941d084945693a9, type: 2}
+  - {fileID: 11400000, guid: e15b6449f7850be4f93841602beba575, type: 2}
   - {fileID: 11400000, guid: 87b1244f6029d4a0f850297a5dfedd7a, type: 2}
-  - {fileID: 11400000, guid: 8f838734eb7a749009a3315fd6312191, type: 2}
+  - {fileID: 11400000, guid: c970e7cecf4f47441acff4159bf5bc01, type: 2}
 --- !u!114 &114932028709818798
 MonoBehaviour:
   m_ObjectHideFlags: 1
