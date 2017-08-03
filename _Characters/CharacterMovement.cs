@@ -28,7 +28,7 @@ namespace RPG.Characters
 
         Vector3 clickPoint;
 
-        GameObject walkTarget;
+        GameObject walkTarget = null;
 
         NavMeshAgent agent;
 
@@ -43,7 +43,7 @@ namespace RPG.Characters
             character = GetComponent<ThirdPersonCharacter>();
 
             walkTarget = new GameObject("walkTarget");
-
+           
 
 
             agent = GetComponent<NavMeshAgent>();
@@ -72,7 +72,7 @@ namespace RPG.Characters
 
             {
 
-                character.Move(agent.desiredVelocity, false, false);
+                character.Move(agent.desiredVelocity);
 
             }
 
@@ -80,7 +80,7 @@ namespace RPG.Characters
 
             {
 
-                character.Move(Vector3.zero, false, false);
+                character.Move(Vector3.zero);
 
             }
 
