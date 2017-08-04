@@ -21,7 +21,7 @@ namespace RPG.Characters
     {
 
         [SerializeField] float stoppingDistance = 1f;
-
+        [SerializeField] float moveSpeedMultiplier = .7f;
 
 
         ThirdPersonCharacter character;
@@ -32,19 +32,23 @@ namespace RPG.Characters
 
         NavMeshAgent agent;
 
+        Animator animator;
+
+        Rigidbody rigidBody;
+
 
 
         void Start()
 
         {
-
+            animator = GetComponent<Animator>();
             CameraRaycaster cameraRaycaster = Camera.main.GetComponent<CameraRaycaster>();
 
             character = GetComponent<ThirdPersonCharacter>();
 
             walkTarget = new GameObject("walkTarget");
-           
 
+            rigidBody = GetComponent<Rigidbody>();
 
             agent = GetComponent<NavMeshAgent>();
 
@@ -117,7 +121,15 @@ namespace RPG.Characters
             }
 
         }
-
+        void OnAnimatorMove()
+        {
+            if (Time.deltaTime > 0)
+            {
+                Vector3 velocity = (animator.deltaPosition * moveSpeedMultiplier) / Time.deltaTime;
+                velocity.y = rigidBody.velocity.y;
+                rigidBody.velocity = velocity;
+            }
+        }
     }
 
 }
