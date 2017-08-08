@@ -14,7 +14,7 @@ namespace RPG.Characters
 
     [RequireComponent(typeof(NavMeshAgent))]
 
-    [RequireComponent(typeof(ThirdPersonCharacter))]
+   
 
     public class CharacterMovement : MonoBehaviour
 
@@ -22,19 +22,23 @@ namespace RPG.Characters
 
         [SerializeField] float stoppingDistance = 1f;
         [SerializeField] float moveSpeedMultiplier = .7f;
+        [SerializeField] float animationSpeedMultiplier = 1.5f;
+        [SerializeField] float MovingTurnSpeed = 360;
+        [SerializeField] float StationaryTurnSpeed = 180;
+        [SerializeField] float moveThreshold = 1f;
 
-
-        ThirdPersonCharacter character;
 
         Vector3 clickPoint;
 
-        GameObject walkTarget = null;
+   
 
         NavMeshAgent agent;
 
         Animator animator;
 
         Rigidbody rigidBody;
+        float turnAmount;
+        float forwardAmount;
 
 
 
@@ -44,11 +48,11 @@ namespace RPG.Characters
             animator = GetComponent<Animator>();
             CameraRaycaster cameraRaycaster = Camera.main.GetComponent<CameraRaycaster>();
 
-            character = GetComponent<ThirdPersonCharacter>();
+         
 
-            walkTarget = new GameObject("walkTarget");
 
             rigidBody = GetComponent<Rigidbody>();
+            rigidBody.constraints = RigidbodyConstraints.FreezeRotation;
 
             agent = GetComponent<NavMeshAgent>();
 
@@ -76,7 +80,7 @@ namespace RPG.Characters
 
             {
 
-                character.Move(agent.desiredVelocity);
+                Move(agent.desiredVelocity);
 
             }
 
@@ -84,7 +88,7 @@ namespace RPG.Characters
 
             {
 
-                character.Move(Vector3.zero);
+                Move(Vector3.zero);
 
             }
 
@@ -120,6 +124,38 @@ namespace RPG.Characters
 
             }
 
+        }
+        public void Move(Vector3 movement)
+        {
+            SetForwardAndTurn(movement);
+            ApplyExtraTurnRotation();
+            UpdateAnimator();
+        }
+        void SetForwardAndTurn(Vector3 movement)
+        {
+            // convert the world relative moveInput vector into a local-relative
+            // turn amount and forward amount required to head in the desired direction.
+            if (movement.magnitude > moveThreshold)
+            {
+                movement.Normalize();
+            }
+
+            var localMove = transform.InverseTransformDirection(movement);
+            turnAmount = Mathf.Atan2(localMove.x, localMove.z);
+            forwardAmount = localMove.z;
+        }
+
+        void UpdateAnimator()
+        {
+            animator.SetFloat("Forward", forwardAmount, 0.1f, Time.deltaTime);
+            animator.SetFloat("Turn", turnAmount, 0.1f, Time.deltaTime);
+            animator.speed = animationSpeedMultiplier;
+        }
+        void ApplyExtraTurnRotation()
+        {
+            // help the character turn faster (this is in addition to root rotation in the animation)
+            float turnSpeed = Mathf.Lerp(StationaryTurnSpeed, MovingTurnSpeed, forwardAmount);
+            transform.Rotate(0, turnAmount * turnSpeed * Time.deltaTime, 0);
         }
         void OnAnimatorMove()
         {
