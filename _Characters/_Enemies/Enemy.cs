@@ -8,10 +8,10 @@ using RPG.Core;
 
 namespace RPG.Characters
 {
-    public class Enemy : MonoBehaviour, IDamageable
+    public class Enemy : MonoBehaviour, IDamageable //TODO remove interface
     {
 
-        [SerializeField] float maxHealthPoints = 100f;
+        
         [SerializeField] float chaseRadius = 6f;
 
         [SerializeField] float attackRadius = 4f;
@@ -23,32 +23,27 @@ namespace RPG.Characters
         [SerializeField] Vector3 aimOffset = new Vector3(0, 1f, 0);
 
         bool isAttacking = false;
-        float currentHealthPoints;
+     
        
         Player player = null;
 
-        public float healthAsPercentage { get { return currentHealthPoints / maxHealthPoints; } }
-
-        public void TakeDamage(float damage)
+     public void TakeDamage(float amount)
         {
-            currentHealthPoints = Mathf.Clamp(currentHealthPoints - damage, 0f, maxHealthPoints);
-            if (currentHealthPoints <= 0) { Destroy(gameObject); }
+            //TODO remove
         }
+
+       
 
         void Start()
         {
             player = FindObjectOfType<Player>();
             
-            currentHealthPoints = maxHealthPoints;
+
         }
 
         void Update()
         {
-            if (player.healthAsPercentage <= Mathf.Epsilon)
-            {
-                StopAllCoroutines();
-                Destroy(this); // To stop enemy behaviour
-            }
+            
 
             float distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
             if (distanceToPlayer <= attackRadius && !isAttacking)
