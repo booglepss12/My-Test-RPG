@@ -15,20 +15,20 @@ namespace RPG.Characters
 
         
 
-        public override void Use(AbilityUseParams useParams)
+        public override void Use(GameObject target)
         {
             PlayAbilitySound();
-            DealDamage(useParams);
+            DealDamage(target);
             PlayParticleEffect(); // TODO find way of moving audio to parent class
 			
         }
 
 		
 
-        private void DealDamage(AbilityUseParams useParams)
+        private void DealDamage(GameObject target)
         {
-            float damageToDeal = useParams.baseDamage + (config as PowerAttackConfig).GetExtraDamage();
-            useParams.target.TakeDamage(damageToDeal);
+            float damageToDeal = (config as PowerAttackConfig).GetExtraDamage();
+            target.GetComponent<HealthSystem>().TakeDamage(damageToDeal);
         }
     }
 }

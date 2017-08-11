@@ -20,7 +20,7 @@ namespace RPG.Characters
 
 
 
-        public abstract void Use(AbilityUseParams useParams);
+        public abstract void Use(GameObject target = null);
 
 
 

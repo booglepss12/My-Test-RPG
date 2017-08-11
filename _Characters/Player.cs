@@ -22,8 +22,7 @@ namespace RPG.Characters
         [SerializeField] float criticalHitMultiplier = 1.25f;
 		[SerializeField] ParticleSystem criticalHitParticle = null;
 
-        // Temporarily serialized for dubbing
-        [SerializeField] AbilityConfig[] abilities;
+        
 
        
         const string ATTACK_TRIGGER = "Attack";
@@ -31,7 +30,8 @@ namespace RPG.Characters
         Enemy enemy = null;
         
         Animator animator = null;
-       
+        SpecialAbilities abilities;
+
         CameraRaycaster cameraRaycaster = null;
         float lastHitTime = 0;
         GameObject weaponObject;
@@ -40,24 +40,18 @@ namespace RPG.Characters
 
         void Start()
         {
-			
 
+            abilities = GetComponent<SpecialAbilities>();
             RegisterForMouseClick();
           
             PutWeaponInHand(currentWeaponConfig);
             SetAttackAnimation();
-            AttachInitialAbilities();
+            
 
             
         }
 
-        private void AttachInitialAbilities()
-        {
-            for (int abilityIndex = 0; abilityIndex < abilities.Length; abilityIndex++)
-            {
-                abilities[abilityIndex].AttachAbilityTo(gameObject);
-            }
-        }
+       
 
         void Update()
         {
@@ -70,11 +64,11 @@ namespace RPG.Characters
 
         private void ScanForAbilityKeyDown()
         {
-            for (int keyIndex = 1; keyIndex < abilities.Length; keyIndex++)
+            for (int keyIndex = 1; keyIndex < abilities.GetNumberOFAbilities(); keyIndex++)
             {
                 if (Input.GetKeyDown(keyIndex.ToString()))
                 {
-                    AttemptSpecialAbility(keyIndex);
+                    abilities.AttemptSpecialAbility(keyIndex);
                 }
             }
         }
@@ -118,22 +112,11 @@ namespace RPG.Characters
             }
             else if (Input.GetMouseButtonDown(1))
             {
-                AttemptSpecialAbility(0);
+                abilities.AttemptSpecialAbility(0);
             }
         }
 
-        private void AttemptSpecialAbility(int abilityIndex)
-        {
-            var energyComponent = GetComponent<Energy>();
-            var energyCost = abilities[abilityIndex].GetEnergyCost();
-
-            if (energyComponent.IsEnergyAvailable(energyCost))
-            {
-                energyComponent.ConsumeEnergy(energyCost);
-                var abilityParams = new AbilityUseParams(enemy, baseDamage);
-                abilities[abilityIndex].Use(abilityParams);
-            }
-        }
+        
 
         private void AttackTarget()
         {
