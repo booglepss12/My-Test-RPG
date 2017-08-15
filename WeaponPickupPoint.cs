@@ -46,7 +46,7 @@ namespace RPG.Weapons
 
         void OnTrigerEnter()
         {
-            FindObjectOfType<Player>().PutWeaponInHand(weaponConfig);
+            FindObjectOfType<PlayerMovement>().PutWeaponInHand(weaponConfig);
             audioSource.PlayOneShot(pickUpSFX);
         }
     }

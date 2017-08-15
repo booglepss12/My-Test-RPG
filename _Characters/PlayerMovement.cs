@@ -1,18 +1,12 @@
-﻿﻿﻿﻿using System;
-using System.Collections;
-using System.Collections.Generic;
+﻿﻿﻿
 using UnityEngine;
 using UnityEngine.Assertions;
-using UnityEngine.SceneManagement;
-
-// TODO consider re-wire...
 using RPG.CameraUI;
-using RPG.Core;
 
-
+//TODO extract weapon system
 namespace RPG.Characters
 {
-    public class Player : MonoBehaviour
+    public class PlayerMovement : MonoBehaviour
     {
         
         [SerializeField] float baseDamage = 10f;
@@ -28,7 +22,7 @@ namespace RPG.Characters
         const string ATTACK_TRIGGER = "Attack";
         const string DEFAULT_ATTACK = "DEFAULT ATTACK";
         Enemy enemy = null;
-        
+        Character character;
         Animator animator = null;
         SpecialAbilities abilities;
 
@@ -40,26 +34,21 @@ namespace RPG.Characters
 
         void Start()
         {
-
+            character = GetComponent<Character>();
             abilities = GetComponent<SpecialAbilities>();
-            RegisterForMouseClick();
+            RegisterForMouseEvents();
           
-            PutWeaponInHand(currentWeaponConfig);
-            SetAttackAnimation();
-            
-
-            
-        }
+            PutWeaponInHand(currentWeaponConfig); //TODO Move to weapon systems
+            SetAttackAnimation(); //TODO Move to weapon systems
+         }
 
        
 
         void Update()
         {
-            var healthPercentage = GetComponent<HealthSystem>().healthAsPercentage;
-            if (healthPercentage > Mathf.Epsilon)
-            {
+            
                 ScanForAbilityKeyDown();
-            }
+            
         }
 
         private void ScanForAbilityKeyDown()
@@ -78,7 +67,7 @@ namespace RPG.Characters
         
 
       
-
+        //TODO Move to weapon systems
         private void SetAttackAnimation()
         {
             animator = GetComponent<Animator>();
@@ -86,8 +75,8 @@ namespace RPG.Characters
             animatorOverrideController[DEFAULT_ATTACK] = currentWeaponConfig.GetAttackAnimClip(); 
         }
 
-        
 
+        //TODO Move to weapon systems
         private GameObject RequestDominantHand()
         {
             var dominantHands = GetComponentsInChildren<DominantHand>();
@@ -97,10 +86,19 @@ namespace RPG.Characters
             return dominantHands[0].gameObject;
         }
 
-        private void RegisterForMouseClick()
+        private void RegisterForMouseEvents()
         {
             cameraRaycaster = FindObjectOfType<CameraUI.CameraRaycaster>();
             cameraRaycaster.onMouseOverEnemy += OnMouseOverEnemy;
+            cameraRaycaster.onMouseOverPotentiallyWalkable += OnMouseOverPotentiallyWalkable;
+        }
+
+        void OnMouseOverPotentiallyWalkable( Vector3 destination)
+        {
+            if (Input.GetMouseButton(0))
+            {
+                character.SetDestination(destination);
+            }
         }
 
         void OnMouseOverEnemy(Enemy enemyToSet)
@@ -110,14 +108,14 @@ namespace RPG.Characters
             {
                 AttackTarget();
             }
-            else if (Input.GetMouseButtonDown(1))
+            else if (Input.GetMouseButton(1))
             {
                 abilities.AttemptSpecialAbility(0);
             }
         }
 
         
-
+        //TODO Use corountines for move and attack
         private void AttackTarget()
         {
             if (Time.time - lastHitTime > currentWeaponConfig.GetMinTimeBetweenHits())
@@ -129,7 +127,7 @@ namespace RPG.Characters
                 lastHitTime = Time.time;
             }
         }
-
+        //TODO Move to weapon system
         private float CalculateDamage()
         {
             bool isCriticalHit = UnityEngine.Random.Range(0f, 1f) <= criticalHitChance;
@@ -145,12 +143,12 @@ namespace RPG.Characters
             }
         }
 
-        private bool IsTargetInRange(GameObject target)
+        bool IsTargetInRange(GameObject target)
         {
             float distanceToTarget = (target.transform.position - transform.position).magnitude;
             return distanceToTarget <= currentWeaponConfig.GetMaxAttackRange();
         }
-
+         //TODO Extract to weapon systems
         public void PutWeaponInHand(Weapon weaponToUse)
         {
             currentWeaponConfig = weaponToUse;

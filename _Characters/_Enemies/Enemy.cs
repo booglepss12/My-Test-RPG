@@ -25,7 +25,7 @@ namespace RPG.Characters
         bool isAttacking = false;
      
        
-        Player player = null;
+        PlayerMovement player = null;
 
      public void TakeDamage(float amount)
         {
@@ -36,7 +36,7 @@ namespace RPG.Characters
 
         void Start()
         {
-            player = FindObjectOfType<Player>();
+            player = FindObjectOfType<PlayerMovement>();
             
 
         }

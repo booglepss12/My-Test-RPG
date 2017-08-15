@@ -45,7 +45,7 @@ namespace RPG.Characters
         [SerializeField] float navMeshAgentSteeringSpeed = 1.0f;
         [SerializeField] float navMeshAgentStoppingDistance = 1.3f;
 
-        Vector3 clickPoint;
+        
 
    
 
@@ -56,6 +56,7 @@ namespace RPG.Characters
         Rigidbody rigidBody;
         float turnAmount;
         float forwardAmount;
+        bool isAlive = true;
 
         private void Awake()
         {
@@ -85,26 +86,7 @@ namespace RPG.Characters
            
         }
 
-        void Start()
-
-        {
-            
-            CameraRaycaster cameraRaycaster = Camera.main.GetComponent<CameraRaycaster>();
-
-         
-
-
-           
-
-            
-
-
-
-            cameraRaycaster.onMouseOverPotentiallyWalkable += OnMouseOverPotentiallyWalkable;
-
-            cameraRaycaster.onMouseOverEnemy += OnMouseOverEnemy;
-
-        }
+        
 
 
 
@@ -112,7 +94,7 @@ namespace RPG.Characters
 
         {
 
-            if (navMeshAgent.remainingDistance > navMeshAgent.stoppingDistance)
+            if (navMeshAgent.remainingDistance > navMeshAgent.stoppingDistance && isAlive)
 
             {
 
@@ -129,49 +111,23 @@ namespace RPG.Characters
             }
 
         }
-
-
-        //TODO Move to Player Control
-        void OnMouseOverPotentiallyWalkable(Vector3 destination)
-
+        public void Kill()
         {
-
-            if (Input.GetMouseButton(0))
-
-            {
-
-                navMeshAgent.SetDestination(destination);
-
-            }
-
+            isAlive = false;
         }
 
-
-
-        //TODO Move to Player Control
-        void OnMouseOverEnemy(Enemy enemy)
-
+        public void SetDestination(Vector3 worldPos)
         {
-
-            if (Input.GetMouseButton(0) || Input.GetMouseButtonDown(1))
-
-            {
-
-                navMeshAgent.SetDestination(enemy.transform.position);
-
-            }
-
+            navMeshAgent.destination = worldPos;
         }
-        public void Move(Vector3 movement)
+
+        void Move(Vector3 movement)
         {
             SetForwardAndTurn(movement);
             ApplyExtraTurnRotation();
             UpdateAnimator();
         }
-        public void Kill()
-        {
-            //to allow death signalling
-        }
+        
         void SetForwardAndTurn(Vector3 movement)
         {
             // convert the world relative moveInput vector into a local-relative
