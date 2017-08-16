@@ -6,26 +6,24 @@ namespace RPG.Characters
 {
     public class SpecialAbilities : MonoBehaviour
     {
-        // Temporarily serialized for dubbing
         [SerializeField] AbilityConfig[] abilities;
         [SerializeField] Image energyBar;
         [SerializeField] float maxEnergyPoints = 100f;
         [SerializeField] float regenPointsPerSecond = 1f;
         [SerializeField] AudioClip outOfEnergy;
+
         float currentEnergyPoints;
         AudioSource audioSource;
 
-
         float energyAsPercent { get { return currentEnergyPoints / maxEnergyPoints; } }
-            
-        
 
         // Use this for initialization
         void Start()
         {
             audioSource = GetComponent<AudioSource>();
-            AttachInitialAbilities();
+
             currentEnergyPoints = maxEnergyPoints;
+            AttachInitialAbilities();
             UpdateEnergyBar();
         }
 
@@ -45,16 +43,6 @@ namespace RPG.Characters
                 abilities[abilityIndex].AttachAbilityTo(gameObject);
             }
         }
-        public int GetNumberOFAbilities()
-        {
-            return abilities.Length;
-        }
-
-        private void AddEnergyPoints()
-        {
-            var pointsToAdd = regenPointsPerSecond * Time.deltaTime;
-            currentEnergyPoints = Mathf.Clamp(currentEnergyPoints + pointsToAdd, 0, maxEnergyPoints);
-        }
 
         public void AttemptSpecialAbility(int abilityIndex, GameObject target = null)
         {
@@ -65,16 +53,24 @@ namespace RPG.Characters
             {
                 ConsumeEnergy(energyCost);
                 abilities[abilityIndex].Use(target);
-            
             }
             else
             {
-                if (!audioSource.isPlaying)
-                {
-                    audioSource.PlayOneShot(outOfEnergy);
-                }
+                audioSource.PlayOneShot(outOfEnergy);
             }
         }
+
+        public int GetNumberOfAbilities()
+        {
+            return abilities.Length;
+        }
+
+        private void AddEnergyPoints()
+        {
+            var pointsToAdd = regenPointsPerSecond * Time.deltaTime;
+            currentEnergyPoints = Mathf.Clamp(currentEnergyPoints + pointsToAdd, 0, maxEnergyPoints);
+        }
+
         public void ConsumeEnergy(float amount)
         {
             float newEnergyPoints = currentEnergyPoints - amount;
@@ -86,7 +82,5 @@ namespace RPG.Characters
         {
             energyBar.fillAmount = energyAsPercent;
         }
-
-        
     }
 }

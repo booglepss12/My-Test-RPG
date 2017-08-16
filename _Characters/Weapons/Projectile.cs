@@ -6,7 +6,6 @@ using UnityEngine;
 using RPG.Core;
 
 namespace RPG.Characters
-
 {
     public class Projectile : MonoBehaviour
     {
@@ -39,15 +38,17 @@ namespace RPG.Characters
                 //DamageIfDamageable(collision);
             }
         }
-        //TODO re-implement
-        /*private void DamageIfDamageable(Collision collision)
-        {
-            Component damagableComponent = collision.gameObject.GetComponent(typeof(IDamageable));
-            if (damagableComponent)
-            {
-                (damagableComponent as IDamageable).TakeDamage(damageCaused);
-            }
-            Destroy(gameObject, DESTROY_DELAY);
-        }*/
+
+        // todo re-impliment
+
+        //private void DamageIfDamageable(Collision collision)
+        //{
+        //    Component damagableComponent = collision.gameObject.GetComponent(typeof(IDamageable));
+        //    if (damagableComponent)
+        //    {
+        //        (damagableComponent as IDamageable).TakeDamage(damageCaused);
+        //    }
+        //    Destroy(gameObject, DESTROY_DELAY);
+        //}
     }
 }

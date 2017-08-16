@@ -4,33 +4,35 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
-namespace RPG.Characters {
-    public class HealthSystem : MonoBehaviour {
+
+namespace RPG.Characters
+{
+    public class HealthSystem : MonoBehaviour
+    {
         [SerializeField] float maxHealthPoints = 100f;
         [SerializeField] Image healthBar;
         [SerializeField] AudioClip[] damageSounds;
         [SerializeField] AudioClip[] deathSounds;
-        [SerializeField] float deathVanishSeconds= 2.0f;
+        [SerializeField] float deathVanishSeconds = 2.0f;
+
         const string DEATH_TRIGGER = "Death";
 
-        float currentHealthPoints = 0;
+        float currentHealthPoints; 
         Animator animator;
-        AudioSource audioSource = null;
+        AudioSource audioSource;
         Character characterMovement;
 
         public float healthAsPercentage { get { return currentHealthPoints / maxHealthPoints; } }
 
-        // Use this for initialization
-        void Start() {
+        void Start()
+        {
             animator = GetComponent<Animator>();
             audioSource = GetComponent<AudioSource>();
             characterMovement = GetComponent<Character>();
 
             currentHealthPoints = maxHealthPoints;
-
         }
 
-        // Update is called once per frame
         void Update()
         {
             UpdateHealthBar();
@@ -38,22 +40,24 @@ namespace RPG.Characters {
 
         void UpdateHealthBar()
         {
-            if (healthBar) //enemies may not have health bars to update
+            if (healthBar) // Enemies may not have health bars to update
             {
                 healthBar.fillAmount = healthAsPercentage;
             }
         }
+
         public void TakeDamage(float damage)
         {
             bool characterDies = (currentHealthPoints - damage <= 0);
             currentHealthPoints = Mathf.Clamp(currentHealthPoints - damage, 0f, maxHealthPoints);
             var clip = damageSounds[UnityEngine.Random.Range(0, damageSounds.Length)];
             audioSource.PlayOneShot(clip);
-            if (currentHealthPoints <= 0)
+            if (characterDies)
             {
                 StartCoroutine(KillCharacter());
             }
         }
+
         public void Heal(float points)
         {
             currentHealthPoints = Mathf.Clamp(currentHealthPoints + points, 0f, maxHealthPoints);
@@ -65,18 +69,17 @@ namespace RPG.Characters {
             characterMovement.Kill();
             animator.SetTrigger(DEATH_TRIGGER);
             var playerComponent = GetComponent<PlayerMovement>();
-            if (playerComponent && playerComponent.isActiveAndEnabled) //relying on lazy evaluation 
+            if (playerComponent && playerComponent.isActiveAndEnabled) // relying on lazy evaluation
             {
                 audioSource.clip = deathSounds[UnityEngine.Random.Range(0, deathSounds.Length)];
-                audioSource.Play(); //overriding existing sounds
+                audioSource.Play(); // overrind any existing sounds
+                yield return new WaitForSecondsRealtime(audioSource.clip.length);
+                SceneManager.LoadScene(0);
             }
-            else //assime is enemy for now, reconsider on other NPCs
+            else // assume is enemy fr now, reconsider on other NPCs
             {
                 DestroyObject(gameObject, deathVanishSeconds);
             }
-            yield return new WaitForSecondsRealtime(audioSource.clip.length);
-
-            SceneManager.LoadScene(0);
         }
     }
 }

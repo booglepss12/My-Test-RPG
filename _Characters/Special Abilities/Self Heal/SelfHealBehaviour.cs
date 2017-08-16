@@ -6,7 +6,6 @@ namespace RPG.Characters
 {
     public class SelfHealBehaviour : AbilityBehaviour
     {
-        
         PlayerMovement player = null;
 
         void Start()
@@ -14,15 +13,12 @@ namespace RPG.Characters
             player = GetComponent<PlayerMovement>();
         }
 
-
-        public override void Use(GameObject target)
+		public override void Use(GameObject target)
 		{
             PlayAbilitySound();
             var playerHealth = player.GetComponent<HealthSystem>();
             playerHealth.Heal((config as SelfHealConfig).GetExtraHealth());
             PlayParticleEffect();
 		}
-
-		
     }
 }

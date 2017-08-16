@@ -5,22 +5,14 @@ using RPG.Characters;
 using RPG.Core;
 using System;
 
-public class AreaEffectBehaviour : AbilityBehaviour{
-
-   
-	
-
-    
+public class AreaEffectBehaviour : AbilityBehaviour {
 
     public override void Use(GameObject target)
     {
         PlayAbilitySound();
         DealRadialDamage();
         PlayParticleEffect();
-		
     }
-
-    
 
     private void DealRadialDamage()
     {
@@ -38,7 +30,7 @@ public class AreaEffectBehaviour : AbilityBehaviour{
             bool hitPlayer = hit.collider.gameObject.GetComponent<PlayerMovement>();
             if (damageable != null && !hitPlayer)
             {
-                float damageToDeal = (config as AreaEffectConfig).GetDamageToEachTarget(); // TODO ok Rick?
+                float damageToDeal = (config as AreaEffectConfig).GetDamageToEachTarget();
                 damageable.TakeDamage(damageToDeal);
             }
         }
