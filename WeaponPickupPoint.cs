@@ -15,7 +15,7 @@ namespace RPG.Characters
         // Use this for initialization
         void Start()
         {
-           
+            audioSource = GetComponent<AudioSource>();
         }
 
         // Update is called once per frame
@@ -44,8 +44,9 @@ namespace RPG.Characters
 
         }
 
-        void OnTrigerEnter()
+        void OnTriggerEnter()
         {
+           
             FindObjectOfType<WeaponSystem>().PutWeaponInHand(weaponConfig);
             audioSource.PlayOneShot(pickUpSFX);
         }
