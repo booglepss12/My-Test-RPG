@@ -524,6 +524,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4836486510851686}
   - component: {fileID: 114707749792861080}
+  - component: {fileID: 114835697398852318}
+  - component: {fileID: 114369647292796256}
   m_Layer: 0
   m_Name: Enemy101
   m_TagString: Untagged
@@ -1900,6 +1902,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 610f816287df94a478980beb4ea34d2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &114369647292796256
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1521914152492874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac46da830b7bf0443b928b3e59950ae5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chaseRadius: 3
 --- !u!114 &114707749792861080
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1908,7 +1922,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1521914152492874}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f4897be133a7b0241aba2ee196e51861, type: 3}
+  m_Script: {fileID: 11500000, guid: 6905e484db758441ab527b6d31c95fde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   animatorController: {fileID: 9100000, guid: e2cf68ff4b1ffda45a77f7307dd789b9, type: 2}
@@ -1916,17 +1930,30 @@ MonoBehaviour:
     type: 2}
   characterAvatar: {fileID: 9000000, guid: d288a0e4a2d923b46898986e979da643, type: 3}
   audioSourceSpatialBlend: 0.5
-  stoppingDistance: 1
-  moveSpeedMultiplier: 0.7
-  animationSpeedMultiplier: 1.5
-  MovingTurnSpeed: 360
-  StationaryTurnSpeed: 180
-  moveThreshold: 1
   colliderCenter: {x: 0, y: 1.03, z: 0}
   colliderRadius: 0.2
   colliderHeight: 2.03
+  moveSpeedMultiplier: 0.7
+  animationSpeedMultiplier: 1.5
+  movingTurnSpeed: 360
+  stationaryTurnSpeed: 180
+  moveThreshold: 1
   navMeshAgentSteeringSpeed: 1
   navMeshAgentStoppingDistance: 1.3
+--- !u!114 &114835697398852318
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1521914152492874}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7341c3f319aa54ef1888cf6c6b931929, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  baseDamage: 10
+  currentWeaponConfig: {fileID: 11400000, guid: 323dc83b54cb34783bdef008156d1b34,
+    type: 2}
 --- !u!137 &137070240441397396
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

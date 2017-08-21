@@ -55,7 +55,7 @@ namespace RPG.Characters
         {
             if (Input.GetMouseButton(0))
             {
-                character.SetDesination(destination);
+                character.SetDestination(destination);
             }
         }
 
