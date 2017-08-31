@@ -8,6 +8,8 @@ namespace RPG.Characters
         protected AbilityConfig config;
 
         const float PARTICLE_CLEAN_UP_DELAY = 20f;
+        const string ATTACK_TRIGGER = "Attack";
+        const string DEFAULT_ATTACK_STATE = "DEFAULT ATTACK";
 
         public abstract void Use(GameObject target = null);
 
@@ -29,6 +31,7 @@ namespace RPG.Characters
             StartCoroutine(DestroyParticleWhenFinished(particleObject));
         }
 
+
         IEnumerator DestroyParticleWhenFinished(GameObject particlePrefab)
         {
             while (particlePrefab.GetComponent<ParticleSystem>().isPlaying)
@@ -39,6 +42,14 @@ namespace RPG.Characters
             yield return new WaitForEndOfFrame();
         }
 
+        protected void PlayAbilityAnimation()
+        {
+            var animatorOverrideController = GetComponent<Character>().GetOverrideController();
+            var animator = GetComponent<Animator>();
+            animator.runtimeAnimatorController = animatorOverrideController;
+            animatorOverrideController[DEFAULT_ATTACK_STATE] = config.GetAbilityAnimation();
+            animator.SetTrigger(ATTACK_TRIGGER);
+        }
         protected void PlayAbilitySound()
         {
             var abilitySound = config.GetRandomAbilitySound();

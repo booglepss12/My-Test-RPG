@@ -79,6 +79,10 @@ namespace RPG.Characters
                 Move(Vector3.zero);
             }
         }
+         public float GetAnimSpeedMultiplier()
+        {
+            return animator.speed;
+        }
 
         public void Kill()
         {

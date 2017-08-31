@@ -1533,7 +1533,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1521914152492874}
   m_LocalRotation: {x: -0.54719216, y: 0.4478625, z: -0.4478625, w: 0.54719216}
-  m_LocalPosition: {x: 143.70813, y: 30.157166, z: 500.00662}
+  m_LocalPosition: {x: 129.51, y: 20.1, z: 500.017}
   m_LocalScale: {x: 0.9616604, y: 1, z: 1.0383402}
   m_Children:
   - {fileID: 4050668799359064}
@@ -1914,6 +1914,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chaseRadius: 3
+  patrolPath: {fileID: 0}
+  waypointTolerance: 2
 --- !u!114 &114707749792861080
 MonoBehaviour:
   m_ObjectHideFlags: 1
