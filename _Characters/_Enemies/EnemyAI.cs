@@ -29,7 +29,7 @@ namespace RPG.Characters
 
 
 
-        PlayerMovement player = null;
+        PlayerControl player = null;
 
         Character character;
 
@@ -53,7 +53,7 @@ namespace RPG.Characters
 
             character = GetComponent<Character>();
 
-            player = FindObjectOfType<PlayerMovement>();
+            player = FindObjectOfType<PlayerControl>();
 
         }
 
@@ -113,7 +113,7 @@ namespace RPG.Characters
 
 
 
-            while (true)
+            while (patrolPath != null)
 
             {
 
