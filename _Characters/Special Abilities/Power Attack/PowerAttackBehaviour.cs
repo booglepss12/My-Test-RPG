@@ -12,7 +12,7 @@ namespace RPG.Characters
             DealDamage(target);
             PlayParticleEffect();
             PlayAbilityAnimation();
-            // TODO find way of moving audio to parent class
+          
         }
 
         private void DealDamage(GameObject target)

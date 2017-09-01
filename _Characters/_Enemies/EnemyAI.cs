@@ -27,7 +27,7 @@ namespace RPG.Characters
 
         [SerializeField] float waypointTolerance = 2.0f;
 
-
+        [SerializeField] float waypointDwellTime = 2.0f;
 
         PlayerControl player = null;
 
@@ -76,6 +76,7 @@ namespace RPG.Characters
             {
 
                 StopAllCoroutines();
+                weaponSystem.StopAttacking();
 
                 StartCoroutine(Patrol());
 
@@ -86,6 +87,7 @@ namespace RPG.Characters
             {
 
                 StopAllCoroutines();
+                weaponSystem.StopAttacking();
 
                 StartCoroutine(ChasePlayer());
 
@@ -98,6 +100,7 @@ namespace RPG.Characters
                 StopAllCoroutines();
 
                 state = State.attacking;
+                weaponSystem.AttackTarget(player.gameObject);
 
             }
 
@@ -123,7 +126,7 @@ namespace RPG.Characters
 
                 CycleWaypointWhenClose(nextWaypointPos);
 
-                yield return new WaitForSeconds(0.5f); // todo parameterise
+                yield return new WaitForSeconds(waypointDwellTime); 
 
             }
 
