@@ -13,7 +13,7 @@ namespace RPG.Characters
         [SerializeField] GameObject shooter; // So can inspected when paused
 
         const float DESTROY_DELAY = 0.01f;
-        float damageCaused;
+       
 
         public void SetShooter(GameObject shooter)
         {
@@ -22,7 +22,7 @@ namespace RPG.Characters
 
         public void SetDamage(float damage)
         {
-            damageCaused = damage;
+            float damageCaused = damage;
         }
 
         public float GetDefaultLaunchSpeed()
@@ -39,16 +39,6 @@ namespace RPG.Characters
             }
         }
 
-        // todo re-impliment
-
-        //private void DamageIfDamageable(Collision collision)
-        //{
-        //    Component damagableComponent = collision.gameObject.GetComponent(typeof(IDamageable));
-        //    if (damagableComponent)
-        //    {
-        //        (damagableComponent as IDamageable).TakeDamage(damageCaused);
-        //    }
-        //    Destroy(gameObject, DESTROY_DELAY);
-        //}
+        
     }
 }

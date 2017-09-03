@@ -105,7 +105,7 @@ namespace RPG.Characters
         {
             transform.LookAt(target.transform);
             animator.SetTrigger(ATTACK_TRIGGER);
-            float damageDelay = 1.0f; //TODO get from weapon itself
+            float damageDelay = currentWeaponConfig.GetDamageDelay();
             SetAttackAnimation();
             StartCoroutine(DamageAfterDelay(damageDelay));
 
