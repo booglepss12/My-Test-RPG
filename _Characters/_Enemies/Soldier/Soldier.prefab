@@ -1948,10 +1948,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1521914152492874}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac46da830b7bf0443b928b3e59950ae5, type: 3}
+  m_Script: {fileID: 11500000, guid: 00c0d59b827694847a96196a4b2f7957, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chaseRadius: 3
+  chaseRadius: 6
   patrolPath: {fileID: 0}
   waypointTolerance: 2
   waypointDwellTime: 2
@@ -1979,7 +1979,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1374798318720628}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b1946e1c1bae1c34ba2666ebb3463952, type: 3}
+  m_Script: {fileID: 11500000, guid: 630ffc6aa06e74ff195c3cddcb693c43, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114707749792861080
