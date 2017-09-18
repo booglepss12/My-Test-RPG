@@ -5,11 +5,10 @@ using UnityEngine;
 
 namespace RPG.Characters
 {
-    [RequireComponent(typeof(HealthSystem))]
     [RequireComponent(typeof(Character))]
-    [RequireComponent(typeof(WeaponSystem))]
-    public class EnemyAI : MonoBehaviour
+    public class NPC : MonoBehaviour
     {
+
         [SerializeField] float chaseRadius = 6f;
         [SerializeField] WaypointContainer patrolPath;
         [SerializeField] float waypointTolerance = 2.0f;
@@ -21,7 +20,7 @@ namespace RPG.Characters
         float currentWeaponRange;
         float distanceToPlayer;
 
-        enum State { idle, patrolling, attacking, chasing }
+        enum State { idle, patrolling, chasing }
         State state = State.idle;
 
         void Start()
@@ -33,30 +32,19 @@ namespace RPG.Characters
         void Update()
         {
             distanceToPlayer = Vector3.Distance(player.transform.position, transform.position);
-            WeaponSystem weaponSystem = GetComponent<WeaponSystem>();
-            currentWeaponRange = weaponSystem.GetCurrentWeapon().GetMaxAttackRange();
-            bool inWeaponCircle = distanceToPlayer <= currentWeaponRange;
             bool inChaseRing = distanceToPlayer > currentWeaponRange && distanceToPlayer <= chaseRadius;
             bool outsideChaseRing = distanceToPlayer > chaseRadius;
-
             if (outsideChaseRing)
             {
                 StopAllCoroutines();
-                weaponSystem.StopAttacking();
                 StartCoroutine(Patrol());
             }
             if (inChaseRing)
             {
                 StopAllCoroutines();
-                weaponSystem.StopAttacking();
                 StartCoroutine(ChasePlayer());
             }
-            if (inWeaponCircle)
-            {
-                StopAllCoroutines();
-                state = State.attacking;
-                weaponSystem.AttackTarget(player.gameObject);
-            }
+
         }
 
         IEnumerator Patrol()
@@ -89,12 +77,8 @@ namespace RPG.Characters
                 yield return new WaitForEndOfFrame();
             }
         }
-
         void OnDrawGizmos()
-        {
-            // Draw attack sphere 
-            Gizmos.color = new Color(255f, 0, 0, .5f);
-            Gizmos.DrawWireSphere(transform.position, currentWeaponRange);
+        { 
 
             // Draw chase sphere 
             Gizmos.color = new Color(0, 0, 255, .5f);
