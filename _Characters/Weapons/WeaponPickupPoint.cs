@@ -42,6 +42,7 @@ namespace RPG.Characters
         {
             var weapon = weaponConfig.GetWeaponPrefab();
             weapon.transform.position = Vector3.zero;
+            weapon.transform.Rotate(0, 140* Time.deltaTime, 0);
             Instantiate(weapon, gameObject.transform);
         }
 
