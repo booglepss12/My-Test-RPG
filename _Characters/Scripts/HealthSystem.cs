@@ -14,6 +14,7 @@ namespace RPG.Characters
         [SerializeField] AudioClip[] damageSounds;
         [SerializeField] AudioClip[] deathSounds;
         [SerializeField] float deathVanishSeconds = 2.0f;
+        [SerializeField] ParticleSystem deathParticle;
 
         const string DEATH_TRIGGER = "Death";
 

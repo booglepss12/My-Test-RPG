@@ -71,13 +71,28 @@ namespace RPG.Characters
 
         void Update()
         {
-            if (navMeshAgent.remainingDistance > navMeshAgent.stoppingDistance && isAlive)
+            if (!navMeshAgent.isOnNavMesh)
+
             {
-                Move(navMeshAgent.desiredVelocity);
+
+                Debug.LogError(gameObject.name + " uh oh this guy is not on the navmesh");
+
             }
-            else
+
+            else if (navMeshAgent.remainingDistance > navMeshAgent.stoppingDistance && isAlive)
+
             {
+
+                Move(navMeshAgent.desiredVelocity);
+
+            }
+
+            else
+
+            {
+
                 Move(Vector3.zero);
+
             }
         }
          public float GetAnimSpeedMultiplier()
