@@ -14,14 +14,17 @@ namespace RPG.Characters
         [SerializeField] AudioClip[] damageSounds;
         [SerializeField] AudioClip[] deathSounds;
         [SerializeField] float deathVanishSeconds = 2.0f;
-        [SerializeField] ParticleSystem deathParticle;
+        
 
-        const string DEATH_TRIGGER = "Death";
-
+       
+       
         float currentHealthPoints; 
         Animator animator;
         AudioSource audioSource;
+        ParticleSystem deathParticle;
         Character characterMovement;
+        const string DEATH_TRIGGER = "Death";
+        
 
         public float healthAsPercentage { get { return currentHealthPoints / maxHealthPoints; } }
 
@@ -30,8 +33,11 @@ namespace RPG.Characters
             animator = GetComponent<Animator>();
             audioSource = GetComponent<AudioSource>();
             characterMovement = GetComponent<Character>();
-
             currentHealthPoints = maxHealthPoints;
+            deathParticle = GetComponent<ParticleSystem>();
+            
+            
+           
         }
 
         void Update()
@@ -72,12 +78,15 @@ namespace RPG.Characters
             if (playerComponent && playerComponent.isActiveAndEnabled) // relying on lazy evaluation
             {
                 audioSource.clip = deathSounds[UnityEngine.Random.Range(0, deathSounds.Length)];
-                audioSource.Play(); // overrind any existing sounds
+                audioSource.Play();
+                deathParticle.Play();
+                DestroyObject(gameObject, deathVanishSeconds); 
                 yield return new WaitForSecondsRealtime(audioSource.clip.length);
-                SceneManager.LoadScene(0);
+                SceneManager.LoadScene(1);
             }
-            else // assume is enemy fr now, reconsider on other NPCs
+            else 
             {
+                deathParticle.Play();
                 DestroyObject(gameObject, deathVanishSeconds);
             }
         }

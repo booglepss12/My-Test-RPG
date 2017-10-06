@@ -46,7 +46,7 @@ namespace RPG.Characters
 
         public void AttemptSpecialAbility(int abilityIndex, GameObject target = null)
         {
-            var energyComponent = GetComponent<SpecialAbilities>();
+           
             var energyCost = abilities[abilityIndex].GetEnergyCost();
 
             if (energyCost <= currentEnergyPoints)

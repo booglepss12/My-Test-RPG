@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 2c495bd336b43744791a0886e41e97d0
+timeCreated: 1507250229
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Medieval Scribish
+  fontNames:
+  - Medieval Scribish
+  fallbackFontReferences: []
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
