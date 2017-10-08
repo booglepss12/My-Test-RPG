@@ -27,7 +27,10 @@ namespace RPG.CameraUI
         public delegate void OnMouseOverNPC(NPC npc);
         public event OnMouseOverNPC onMouseOverNPC;
 
-		void Update()
+        public delegate void OnMouseOverMonster(Monster monster);
+        public event OnMouseOverMonster onMouseOverMonster;
+
+        void Update()
         {
             currentScrenRect = new Rect(0, 0, Screen.width, Screen.height);
 
@@ -51,6 +54,7 @@ namespace RPG.CameraUI
                 if (RaycastForEnemy(ray)) { return; }
                 if (RaycastForPotentiallyWalkable(ray)) { return; }
                 if (RaycastForNPC(ray)) { return; }
+                if (RaycastForMonster(ray)) { return; }
             }
 		}
 
@@ -79,6 +83,20 @@ namespace RPG.CameraUI
             {
                 Cursor.SetCursor(unknownCursor, cursorHotspot, CursorMode.Auto);
                 onMouseOverNPC(NPCHit);
+                return true;
+            }
+            return false;
+        }
+        bool RaycastForMonster(Ray ray)
+        {
+            RaycastHit hitInfo;
+            Physics.Raycast(ray, out hitInfo, maxRaycastDepth);
+            var gameObjectHit = hitInfo.collider.gameObject;
+            var monsterHit = gameObjectHit.GetComponent<Monster>();
+            if (monsterHit)
+            {
+                Cursor.SetCursor(enemyCursor, cursorHotspot, CursorMode.Auto);
+                onMouseOverMonster(monsterHit);
                 return true;
             }
             return false;
