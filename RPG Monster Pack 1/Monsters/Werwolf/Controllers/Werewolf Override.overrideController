@@ -5,7 +5,7 @@ AnimatorOverrideController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Monster Override
+  m_Name: Werewolf Override
   m_Controller: {fileID: 9100000, guid: 06fcfac67522c6f489850dcf62423b54, type: 2}
   m_Clips:
   - m_OriginalClip: {fileID: 7400000, guid: 5b06ce566c76aa34aabba2f17add0575, type: 3}

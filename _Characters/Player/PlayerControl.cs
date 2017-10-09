@@ -47,6 +47,7 @@ namespace RPG.Characters
             var cameraRaycaster = FindObjectOfType<CameraRaycaster>();
 
             cameraRaycaster.onMouseOverEnemy += OnMouseOverEnemy;
+            cameraRaycaster.onMouseOverMonster += OnMouseOverMonster;
 
             cameraRaycaster.onMouseOverPotentiallyWalkable += OnMouseOverPotentiallyWalkable;
 
@@ -152,7 +153,43 @@ namespace RPG.Characters
 
         }
 
+        void OnMouseOverMonster(Monster monster)
 
+        {
+
+            if (Input.GetMouseButton(0) && IsTargetInRange(monster.gameObject))
+
+            {
+
+                weaponSystem.AttackTarget(monster.gameObject);
+
+            }
+
+            else if (Input.GetMouseButton(0) && !IsTargetInRange(monster.gameObject))
+
+            {
+
+                StartCoroutine(MoveAndAttackMonster(monster));
+
+            }
+
+            else if (Input.GetMouseButtonDown(1) && IsTargetInRange(monster.gameObject))
+
+            {
+
+                abilities.AttemptSpecialAbility(0, monster.gameObject);
+
+            }
+
+            else if (Input.GetMouseButtonDown(1) && !IsTargetInRange(monster.gameObject))
+
+            {
+
+                StartCoroutine(MoveAndPowerAttackMonster(monster));
+
+            }
+
+        }
 
         IEnumerator MoveToTarget(GameObject target)
 
@@ -184,7 +221,15 @@ namespace RPG.Characters
 
         }
 
+        IEnumerator MoveAndAttackMonster(Monster monster)
 
+        {
+
+            yield return StartCoroutine(MoveToTarget(monster.gameObject));
+
+            weaponSystem.AttackTarget(monster.gameObject);
+
+        }
 
         IEnumerator MoveAndPowerAttack(EnemyAI enemy)
 
@@ -193,6 +238,16 @@ namespace RPG.Characters
             yield return StartCoroutine(MoveToTarget(enemy.gameObject));
 
             abilities.AttemptSpecialAbility(0, enemy.gameObject);
+
+        }
+
+        IEnumerator MoveAndPowerAttackMonster(Monster monster)
+
+        {
+
+            yield return StartCoroutine(MoveToTarget(monster.gameObject));
+
+            abilities.AttemptSpecialAbility(0, monster.gameObject);
 
         }
 

@@ -5,7 +5,7 @@ AnimatorController:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_Name: Monster Animation
+  m_Name: Minator Animation
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Forward
@@ -533,7 +533,7 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 5b06ce566c76aa34aabba2f17add0575, type: 3}
+  m_Motion: {fileID: 7400000, guid: 1d8ad6709d5429d42b824b40bd20b99a, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -702,7 +702,7 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 8e515c86929d1db4b9ee2251e2990ac0, type: 3}
+  m_Motion: {fileID: 7400000, guid: 88835c8551ef1c2439777edb28e97689, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -727,7 +727,7 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 00238c1da60d6bf469d21c47facf9696, type: 3}
+  m_Motion: {fileID: 7400000, guid: bc7f51b0a7dffd94c8b91f3f87f6648c, type: 3}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 

@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_Name: Brave Override
+  m_Controller: {fileID: 9100000, guid: 11489200bdb36584080bf3e0a128b5f1, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 5b06ce566c76aa34aabba2f17add0575, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: 00a8928c3c1c4b842a10936fb36941aa, type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: 8e515c86929d1db4b9ee2251e2990ac0, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: 587c1603718f17c418c2d6d150fb8830, type: 3}
+  - m_OriginalClip: {fileID: 7400000, guid: 2ba327eab36ad764c818cc0cfd2858d3, type: 3}
+    m_OverrideClip: {fileID: 7400000, guid: 2ba327eab36ad764c818cc0cfd2858d3, type: 3}

@@ -14,6 +14,7 @@ namespace RPG.CameraUI
 		[SerializeField] Vector2 cursorHotspot = new Vector2(0, 0);
 
         const int POTENTIALLY_WALKABLE_LAYER = 8;
+        const int MONSTER_LAYER = 9;
         float maxRaycastDepth = 100f; // Hard coded value
 
         Rect currentScrenRect;
@@ -89,10 +90,12 @@ namespace RPG.CameraUI
         }
         bool RaycastForMonster(Ray ray)
         {
+
             RaycastHit hitInfo;
             Physics.Raycast(ray, out hitInfo, maxRaycastDepth);
             var gameObjectHit = hitInfo.collider.gameObject;
             var monsterHit = gameObjectHit.GetComponent<Monster>();
+
             if (monsterHit)
             {
                 Cursor.SetCursor(enemyCursor, cursorHotspot, CursorMode.Auto);

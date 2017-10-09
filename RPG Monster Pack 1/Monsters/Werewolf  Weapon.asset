@@ -9,7 +9,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 36e75182c88b14ee7bf56210b44f90a3, type: 3}
-  m_Name: Monster Weapon
+  m_Name: Werewolf  Weapon
   m_EditorClassIdentifier: 
   gripTransform: {fileID: 4219815134937942, guid: 5cf4e4ab321ec3342b5d3c9576c341b0,
     type: 2}
