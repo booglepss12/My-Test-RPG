@@ -30,7 +30,7 @@ namespace RPG.Characters
             return projectileSpeed;
         }
 
-        void OnCollisionEnter(Collision collision)
+        void OnCollisionEnter(UnityEngine.Collision collision)
         {
             var layerCollidedWith = collision.gameObject.layer;
             if (shooter && layerCollidedWith != shooter.layer)

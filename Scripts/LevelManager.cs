@@ -7,6 +7,7 @@ public class LevelManager : MonoBehaviour {
 	public void LoadLevel(string name) { 
 
         SceneManager.LoadScene(1);
+        
 	}
 
 	public void QuitRequest(){
