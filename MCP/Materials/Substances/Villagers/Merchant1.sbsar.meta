@@ -1,0 +1,299 @@
+fileFormatVersion: 2
+guid: df1ab0094fdc4b14c9ade23a07937171
+timeCreated: 18446744011573954816
+SubstanceImporter:
+  serializedVersion: 5
+  materialInstances:
+  - serializedVersion: 16
+    name: Reflective
+    prototypeName: Reflective
+    shaderName: Bumped Specular
+    shader: {instanceID: 0}
+    shaderKeywords: 
+    renderQueue: -1
+    lightmapFlags: 5
+    inputs:
+    - name: $outputsize
+      value:
+        scalar[0]: 8
+        scalar[1]: 8
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: $randomseed
+      value:
+        scalar[0]: 0
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: colorMask
+      value:
+        scalar[0]: 0
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {fileID: 2800000, guid: 6c66f770d866a4443a78c3c25becd49a, type: 3}
+    - name: normalMap
+      value:
+        scalar[0]: 0
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {fileID: 2800000, guid: 76ab53683b088d14486d781d5ecf894b, type: 3}
+    - name: fixNormals
+      value:
+        scalar[0]: 0
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: whiteColor
+      value:
+        scalar[0]: 0.7607843
+        scalar[1]: 0.6117647
+        scalar[2]: 0.5568628
+        scalar[3]: 0.019607844
+        texture: {instanceID: 0}
+    - name: redColor
+      value:
+        scalar[0]: 0.6509804
+        scalar[1]: 0.6509804
+        scalar[2]: 0.627451
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: greenColor
+      value:
+        scalar[0]: 0.39607844
+        scalar[1]: 0.34901962
+        scalar[2]: 0.26666668
+        scalar[3]: 0.03529412
+        texture: {instanceID: 0}
+    - name: blueColor
+      value:
+        scalar[0]: 0.2784314
+        scalar[1]: 0.23921569
+        scalar[2]: 0.16862746
+        scalar[3]: 0.03529412
+        texture: {instanceID: 0}
+    - name: yellowColor
+      value:
+        scalar[0]: 0.41960785
+        scalar[1]: 0.39215687
+        scalar[2]: 0.3529412
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: cyanColor
+      value:
+        scalar[0]: 0.53333336
+        scalar[1]: 0.5294118
+        scalar[2]: 0.34509805
+        scalar[3]: 0.03529412
+        texture: {instanceID: 0}
+    - name: magentaColor
+      value:
+        scalar[0]: 0.24313726
+        scalar[1]: 0.23921569
+        scalar[2]: 0.21176471
+        scalar[3]: 0.08235294
+        texture: {instanceID: 0}
+    - name: baseColor
+      value:
+        scalar[0]: 0.29411766
+        scalar[1]: 0.3019608
+        scalar[2]: 0.2
+        scalar[3]: 0.5254902
+        texture: {instanceID: 0}
+    - name: fuzziness
+      value:
+        scalar[0]: 0.2
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: padding
+      value:
+        scalar[0]: 0
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: Effect_Dirtiness
+      value:
+        scalar[0]: 0.21
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: Effect_Paint_Peeling
+      value:
+        scalar[0]: 0
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: Effect_Rust
+      value:
+        scalar[0]: 0.06
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: Effect_Paint_Cracks_Scale
+      value:
+        scalar[0]: 1
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: Effect_Paint_Cracks_Warp_Intensity
+      value:
+        scalar[0]: 0
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: Effect_Sharp_Edges_Scratches_Scale
+      value:
+        scalar[0]: 1
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: Effect_Raw_Metal_Color
+      value:
+        scalar[0]: 0.501961
+        scalar[1]: 0.501961
+        scalar[2]: 0.501961
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: Effect_Raw_Metal_Specular_Color
+      value:
+        scalar[0]: 0.588235
+        scalar[1]: 0.588235
+        scalar[2]: 0.588235
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: redMask
+      value:
+        scalar[0]: 0.32
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: greenMask
+      value:
+        scalar[0]: 0.73
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: blueMask
+      value:
+        scalar[0]: 0.66
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: yellowMask
+      value:
+        scalar[0]: 1
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: magentaMask
+      value:
+        scalar[0]: 0.89
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: cyanMask
+      value:
+        scalar[0]: 1
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: whiteMask
+      value:
+        scalar[0]: 0
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: baseMask
+      value:
+        scalar[0]: 0.19
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: extraDiffuse
+      value:
+        scalar[0]: 0
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {fileID: 2800000, guid: 766a79b9331a3f5489f31cc77f04139c, type: 3}
+    - name: extraBlend
+      value:
+        scalar[0]: 1
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    - name: extraBlendAmt
+      value:
+        scalar[0]: 0.9
+        scalar[1]: 0
+        scalar[2]: 0
+        scalar[3]: 0
+        texture: {instanceID: 0}
+    materialInformation:
+      serializedVersion: 5
+      offset: {x: 0, y: 0}
+      scale: {x: 1, y: 1}
+      generateMipmaps: 1
+      generateAllOutputs: 0
+      animationUpdateRate: 0
+    materialProperties:
+      serializedVersion: 3
+      texEnvs:
+      - _BumpMap:
+          texture: {fileID: 1408310203, guid: 00000000000000000000000000000000, type: 0}
+          scale: {x: 1, y: 1}
+          offset: {x: 0, y: 0}
+      - _MainTex:
+          texture: {fileID: -1770752981, guid: 00000000000000000000000000000000, type: 0}
+          scale: {x: 1, y: 1}
+          offset: {x: 0, y: 0}
+      floats:
+      - _Shininess: 0.124027014
+      colors:
+      - _Color: {r: 1, g: 1, b: 1, a: 1}
+      - _SpecColor: {r: 0.5, g: 0.5, b: 0.5, a: 1}
+    textureParameters:
+    - name: Reflective_diffuse
+      alphaSource: 5
+      filterMode: 1
+      aniso: 1
+      wrapMode: 0
+    - name: Reflective_normal
+      alphaSource: 0
+      filterMode: 1
+      aniso: 1
+      wrapMode: 0
+    textureAssignments: []
+    buildTargetSettings:
+    - serializedVersion: 2
+      buildTarget: 
+      textureWidth: 1024
+      textureHeight: 1024
+      textureFormat: 1
+      loadingBehavior: 1
+  deletedPrototypes: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
